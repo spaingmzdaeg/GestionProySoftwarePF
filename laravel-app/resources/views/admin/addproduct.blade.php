@@ -21,7 +21,7 @@ Add Product - Single Ecom
                 @endforeach
               </ul>
             </div>
-            @endif 
+            @endif
             <form action="{{route('storeproduct')}}" method="POST" enctype="multipart/form-data">
               @csrf
               <div class="row mb-3">

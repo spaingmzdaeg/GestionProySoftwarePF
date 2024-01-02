@@ -33,13 +33,13 @@ Route::controller(ClientController::class)->group(function(){
     Route::get('/category/{id}/{slug}', 'CategoryPage')->name('category');
     Route::get('/product-details/{id}/{slug}', 'SingleProduct')->name('singleproduct');;
     Route::get('/new-release', 'NewRelease')->name('newrelease');
+    Route::get('/client/logout', 'ClientLogout')->name('clientlogout');
     
 });
 
 Route::middleware(['auth', 'role:user'])->group(function () {
 
-    Route::controller(ClientController::class)->group(function(){
-        
+    Route::controller(ClientController::class)->group(function(){       
         Route::get('/add-to-cart', 'AddToCart')->name('addtocart');
         Route::post('/add-product-to-cart', 'AddProductToCart')->name('addproducttocart');
         Route::get('/shipping-address', 'GetShippingAddress')->name('shippingaddress');
@@ -52,7 +52,6 @@ Route::middleware(['auth', 'role:user'])->group(function () {
         Route::get('/todays-deal', 'TodaysDeal')->name('todaysdeal');
         Route::get('/customer-service', 'CustomerService')->name('customerservice');
         Route::get('/remove-cart-item/{id}', 'RemoveCartItem')->name('removeitem');
-
     });
     
     });
@@ -65,6 +64,7 @@ Route::get('/dashboard', function () {
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::controller(DashboardController::class)->group(function(){
         Route::get('/admin/dashboard', 'Index')->name('admindashboard');
+        Route::get('/admin/dashboard/logout', 'AdminLogout')->name('adminlogout');
     });
 
     Route::controller(CategoryController::class)->group(function(){

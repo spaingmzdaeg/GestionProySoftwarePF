@@ -120,10 +120,21 @@ class ClientController extends Controller
             $id = $item->id;
             Cart::findOrFail($id)->delete();
         }
-
+    
         // Esto es para eliminar la direccion de envio cuando realizo un pedido 
 
         return redirect()->route('pendingorders')->with('message', 'Your Order Has Been Placed Succesfully');
         
     }
+
+    //BAD FUCKING PRACTICE THIS CODE IS HARCODED AND IS REPEATED TOO IN DASHBORAD CONTROLLES JUST USE lOGOUT Function
+    public function ClientLogout(Request $request) 
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('http://localhost:9000/public/login/');
+    }
+
 }

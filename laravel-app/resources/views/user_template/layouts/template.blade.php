@@ -55,6 +55,7 @@
                            <li><a href="{{ route('newrelease') }}">New Releases</a></li>
                            <li><a href="{{ route('todaysdeal') }}">Today's Deals</a></li>
                            <li><a href="{{ route('customerservice') }}">Customer Service</a></li>
+                           <li><a href="{{ route('clientlogout') }}">Logout</a></li>
                         </ul>
                      </div>
                   </div>
